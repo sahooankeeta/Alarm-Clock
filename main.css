@@ -1,0 +1,442 @@
+:root {
+  --color-primary: #da4336; }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+.hidden {
+  opacity: 0;
+  visibility: hidden; }
+
+.opening-view {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-primary);
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  position: absolute;
+  z-index: 5; }
+
+.welcome {
+  color: white;
+  font-weight: 600;
+  font-size: 7rem;
+  letter-spacing: 10px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Manrope,Sanserif"; }
+
+.container {
+  min-height: 100vh;
+  background-color: aliceblue;
+  background-image: url("./image/Doubs.svg");
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; }
+  .container-display {
+    position: relative;
+    flex: 1; }
+
+/*******CLOCK*/
+.clock-container {
+  background-color: #f0eeee;
+  width: 40rem;
+  margin: 2rem auto;
+  padding: 3rem;
+  border-radius: 2rem;
+  font-size: 2.5rem; }
+
+.clock-icon {
+  height: 2.5rem;
+  width: 2.5rem; }
+
+.clock-time {
+  font-size: 5rem; }
+
+.clock-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around; }
+
+.ampm {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold; }
+
+.weekdays {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem; }
+
+.weekday {
+  padding: 0 10px;
+  color: grey;
+  text-transform: uppercase;
+  font-size: 1.6rem; }
+
+.today {
+  color: black;
+  font-weight: 700; }
+
+.set-alarm {
+  width: 40rem;
+  background-color: #f39d9d;
+  padding: 1rem;
+  margin: 0 auto; }
+  .set-alarm-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 2.5rem; }
+    .set-alarm-time .label {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .set-alarm-time .label span {
+        text-transform: capitalize;
+        color: white;
+        letter-spacing: 1px;
+        font-size: 1.5rem; }
+
+.set-actions {
+  display: flex;
+  justify-content: space-between; }
+  .set-actions button {
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    background-color: white;
+    border: none;
+    color: #da4336;
+    font-weight: 600;
+    border-radius: 10rem;
+    cursor: pointer; }
+
+select {
+  border: none;
+  outline: none;
+  color: #da4336;
+  padding: 1rem; }
+
+.slider {
+  height: 3.5rem;
+  width: 7rem;
+  border: 2px solid grey;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  position: relative;
+  background-color: aliceblue;
+  display: flex;
+  transition: all 0.8s ease-out; }
+
+.slide {
+  height: inherit;
+  display: block;
+  width: 40%;
+  border-radius: 2rem;
+  background-color: white;
+  position: absolute;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px #bdbcbc;
+  transition: all 0.5s; }
+
+.alarms {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 100%; }
+
+.alarm-card {
+  width: 30rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 20px; }
+  .alarm-card:hover .alarm-action {
+    transform: translateX(0); }
+
+.alarm-display {
+  padding: 0 1rem; }
+
+.alarm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.alarm-footer {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.alarm-time {
+  font-size: 5rem; }
+
+.alarm-delete {
+  cursor: pointer; }
+
+.alarm-icon {
+  height: 2.5rem;
+  width: 2.5rem; }
+
+.alarm-days {
+  text-transform: capitalize;
+  font-size: 1.5rem; }
+
+.alarm-action {
+  background-color: red;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin: 0 auto; }
+
+.alarm-delete {
+  top: 0; }
+
+.alarm-edit {
+  top: 4rem; }
+
+.active .slide {
+  background-color: blue;
+  transform: translateX(120%); }
+
+.screen {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: all 0.3s; }
+
+.active .slider {
+  background-color: #397af1; }
+
+.create-new-alarm {
+  background-color: white;
+  cursor: pointer;
+  color: #da4336;
+  font-size: 5.5rem;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1rem;
+  outline: none;
+  border: none;
+  width: 5rem;
+  padding: 0 1.3rem;
+  border-radius: 100%;
+  text-align: center; }
+
+/********CLOCK***/
+/************LOADER***********/
+.loader {
+  height: 35rem;
+  width: 35rem;
+  background-color: #da4336;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin: auto; }
+
+.loader-item {
+  display: inline-block;
+  padding: 1rem; }
+
+.swipeout {
+  transform: translateX(-100%);
+  transition: transform 1s; }
+
+.transparent-circle {
+  border: 2px solid #fff;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 75px;
+  border-radius: 75px;
+  position: relative; }
+
+.center {
+  margin: auto; }
+
+.center-pin {
+  content: "";
+  position: absolute;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 100%;
+  transform: translate(-50%, -50%); }
+
+.alarm-clock {
+  transform: scale(220%); }
+
+.alarm-clock:before,
+.alarm-clock:after,
+.stopwatch:before,
+.stopwatch:after {
+  content: "";
+  background: #fff;
+  position: absolute;
+  transform-origin: bottom;
+  height: 10px;
+  width: 2.25px; }
+
+.alarm-clock:before {
+  transform: rotate(-228deg);
+  position: absolute;
+  top: -5px;
+  right: 2px;
+  margin-left: 20px; }
+
+.alarm-clock:after {
+  transform: rotate(-126deg);
+  position: absolute;
+  top: -5px;
+  left: 2px; }
+
+.alarm-clock.animating::before,
+.alarm-clock.animating::after {
+  backface-visibility: hidden;
+  perspective: 1000px; }
+
+.alarm-clock.animating {
+  animation: do-nothing 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+
+@keyframes do-nothing {
+  100% {
+    opacity: 1; } }
+
+.alarm-clock.animating::before {
+  animation: shake-left 0.82s infinite; }
+
+.alarm-clock.animating::after {
+  animation: shake-right 0.82s infinite; }
+
+@keyframes shake-left {
+  0% {
+    transform: rotate(-228deg);
+    margin-left: 1.5px;
+    margin-top: -9.5px; }
+  10%,
+  90% {
+    transform: rotate(-232deg);
+    margin-left: 2.5px;
+    margin-top: -10px; }
+  20%,
+  80% {
+    transform: rotate(-226deg);
+    margin-left: 0.5px;
+    margin-top: -8.5px; }
+  30%,
+  50%,
+  70% {
+    transform: rotate(-232deg);
+    margin-left: 2.5px;
+    margin-top: -10px; }
+  40%,
+  60% {
+    transform: rotate(-226deg);
+    margin-left: 0.5px;
+    margin-top: -8.5px; }
+  100% {
+    transform: rotate(-228deg);
+    margin-left: 1.5px;
+    margin-top: -9.5px; } }
+
+@keyframes shake-right {
+  0% {
+    transform: rotate(-126deg);
+    margin-left: 0;
+    margin-top: -9.5px; }
+  10%,
+  90% {
+    transform: rotate(-132deg);
+    margin-top: -9px; }
+  20%,
+  80% {
+    transform: rotate(-122deg);
+    margin-top: -10px; }
+  30%,
+  50%,
+  70% {
+    transform: rotate(-132deg);
+    margin-top: -9px; }
+  40%,
+  60% {
+    transform: rotate(-122deg);
+    margin-top: -10px; }
+  100% {
+    transform: rotate(-126deg);
+    margin-left: 0;
+    margin-top: -9.5px; } }
+
+.hand {
+  background: #fff;
+  position: absolute;
+  transform-origin: bottom;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  height: 10.5px;
+  width: 2.25px; }
+
+.hand.minute {
+  height: 15px;
+  width: 1.5px;
+  position: absolute;
+  top: 10%;
+  left: 43%;
+  transform: rotate(120deg) translate(-43%, -10%); }
+
+.stopwatch {
+  transform: scale(220%); }
+
+.stopwatch:before {
+  height: 2px;
+  width: 12px;
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%); }
+
+.stopwatch:after {
+  height: 3px;
+  transform: rotate(230deg);
+  position: absolute;
+  right: 0px;
+  top: 2px; }
+
+.stopwatch.animating::before {
+  animation: push 2s infinite; }
+
+.stopwatch.animating .hand {
+  animation: spin-360 3.5s infinite;
+  animation-delay: 2.5s;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform-origin: 50% 100%;
+  backface-visibility: hidden; }
+
+@keyframes push {
+  0% {
+    transform: translate(-6px, 0px); }
+  10% {
+    transform: translate(-6px, -5px); }
+  20% {
+    transform: translate(-6px, 0px); } }
+
+@keyframes spin-360 {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
