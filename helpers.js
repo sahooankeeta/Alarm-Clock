@@ -1,3 +1,4 @@
+//FETCH CURRENT TIME
 export const getCurrentTime = function () {
   let h = new Date().getHours();
   let ap = "am";
@@ -19,6 +20,8 @@ export const getCurrentTime = function () {
     day: new Date().getDay(),
   };
 };
+
+//HANDLE SLIDING WINDOW
 export const togglButton = function () {
   if (document.querySelector(".create-new-alarm").innerHTML == "+")
     document.querySelector(".create-new-alarm").innerHTML = `&#8592;`;

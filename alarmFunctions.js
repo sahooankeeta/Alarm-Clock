@@ -1,5 +1,7 @@
 import { getCurrentTime } from "./helpers.js";
+//KEEP TRACK OF ACTIVATED ALARMS
 let array = [];
+//ACTIVATE ALARM
 export const activateAlarm = function (e) {
   e.target.closest(".alarm-card").classList.add("active");
 
@@ -11,10 +13,14 @@ export const activateAlarm = function (e) {
     return new Date("1970/01/01 " + a.time) - new Date("1970/01/01 " + b.time);
   });
 };
+
+//DEACTIVATE ALARM
 export const deactivateAlarm = function (id) {
   document.getElementById(id).classList.remove("active");
   array = array.filter((el) => el.id != id);
 };
+
+//HANDLE SNOOZE ALARM
 (function snooze() {
   if (array.length > 0) {
     let time = array[0].time;
